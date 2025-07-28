@@ -12,7 +12,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import toast from "react-hot-toast";
-//
+
 const Login = () => {
   const {
     register,
