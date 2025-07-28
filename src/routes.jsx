@@ -5,6 +5,8 @@ import AboutUs from "./Pages/AboutUs/AboutUs";
 import Contact from "./Pages/Contact/Contact";
 import Books from "./Pages/Books/Books";
 import BooksDetails from "./Components/BooksDetails";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
 
 const Router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ const Router = createBrowserRouter([
           fetch(`http://localhost:8080/book/${params.id}`),
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

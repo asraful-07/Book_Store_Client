@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FaBars, FaTimes, FaUser } from "react-icons/fa";
+import { FaBars, FaTimes, FaRegUserCircle } from "react-icons/fa";
+import { useAuth } from "../../provider/AuthProvider";
+import { FaSignOutAlt, FaSignInAlt, FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.png";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // Check if a link is active
+  // Check if a link is active //
   const isActive = (path) => location.pathname === path;
 
   return (
     <div className="bg-transparent">
       {/* Top Navbar */}
       <div className="flex justify-between items-center px-4 py-3 md:px-8 container mx-auto">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-          🎬 CineSpot
-        </h1>
-
+        <img src={logo} alt="Logo" className="w-28 h-10" />
         <div className="md:hidden">
           <button
             onClick={toggleSidebar}
@@ -68,7 +71,7 @@ const Navbar = () => {
             <NavLink
               to="/books"
               className={`px-4 py-2 transition-colors ${
-                isActive("/contact")
+                isActive("/books")
                   ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
                   : "text-gray-700 hover:text-indigo-600"
               }`}
@@ -76,10 +79,58 @@ const Navbar = () => {
               All Books
             </NavLink>
           </li>
-          <li>
-            <button className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md flex items-center justify-center gap-2 border border-indigo-500">
-              <FaUser className="inline" /> Sign In
+          <li className="relative">
+            <button
+              onClick={() => setShowDropdown(!showDropdown)}
+              className="flex items-center gap-2 p-2 text-gray-700 hover:text-indigo-600"
+            >
+              <FaRegUserCircle size={36} />
             </button>
+
+            {showDropdown && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setShowDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                    >
+                      <FaSignOutAlt />
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      <FaSignInAlt />
+                      Sign In
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      <FaUserPlus />
+                      Sign Up
+                    </Link>
+                  </>
+                )}
+              </div>
+            )}
           </li>
         </ul>
       </div>
@@ -92,7 +143,7 @@ const Navbar = () => {
       >
         <div className="p-4 border-b border-gray-200 flex justify-between items-center">
           <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-            🎬 CineSpot
+            <img src={logo} alt="" />
           </h2>
           <button
             onClick={toggleSidebar}
@@ -146,18 +197,52 @@ const Navbar = () => {
               to="/books"
               onClick={toggleSidebar}
               className={`block px-4 py-3 ${
-                isActive("/contact")
+                isActive("/books")
                   ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
                   : "text-gray-700 hover:text-indigo-600"
               }`}
             >
-              All Movies
+              All Books
             </NavLink>
           </li>
           <li className="mt-4">
-            <button className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md flex items-center justify-center gap-2 border border-indigo-500">
-              <FaUser className="inline" /> Sign In
-            </button>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  onClick={toggleSidebar}
+                  className="block w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md text-center"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    logout();
+                    toggleSidebar();
+                  }}
+                  className="w-full mt-2 px-4 py-3 rounded-full bg-red-500 text-white font-semibold hover:bg-red-600 transition-all shadow-md flex items-center justify-center gap-2"
+                >
+                  <FaSignOutAlt /> Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={toggleSidebar}
+                  className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md text-center flex items-center justify-center gap-2"
+                >
+                  <FaSignInAlt /> Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={toggleSidebar}
+                  className="w-full mt-2 px-4 py-3 rounded-full border border-indigo-500 text-indigo-600 font-semibold hover:bg-indigo-50 transition-all shadow-md text-center flex items-center justify-center gap-2"
+                >
+                  <FaUserPlus /> Sign Up
+                </Link>
+              </>
+            )}
           </li>
         </ul>
       </div>
