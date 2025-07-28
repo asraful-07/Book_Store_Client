@@ -10,10 +10,12 @@ import {
   FaMinus,
   FaPlus,
 } from "react-icons/fa";
+import RelatedBook from "./RelatedBook";
 
 const BooksDetails = () => {
   const book = useLoaderData();
   const {
+    _id,
     name,
     author,
     price,
@@ -52,6 +54,20 @@ const BooksDetails = () => {
                   className="w-full h-auto object-cover"
                 />
               </div>
+              {/* <div className="grid grid-cols-4 gap-2">
+                {imageUrls.map((img, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-md overflow-hidden cursor-pointer hover:border-indigo-500"
+                  >
+                    <img
+                      src={img}
+                      alt={`${name} ${index + 1}`}
+                      className="w-full h-20 object-cover"
+                    />
+                  </div>
+                ))}
+              </div> */}
             </div>
           </div>
 
@@ -245,6 +261,9 @@ const BooksDetails = () => {
             </div>
           )}
         </div>
+
+        {/* Related Books Component */}
+        <RelatedBook bookId={_id} />
       </div>
     </div>
   );
