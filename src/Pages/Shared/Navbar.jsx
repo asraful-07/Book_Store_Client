@@ -13,7 +13,7 @@ const Navbar = () => {
   const location = useLocation();
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  // Check if a link is active //
+  // Check if a link is active
   const isActive = (path) => location.pathname === path;
 
   return (
