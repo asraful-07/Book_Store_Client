@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../provider/AuthProvider";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
   FaEyeSlash,
   FaArrowRight,
 } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const {
