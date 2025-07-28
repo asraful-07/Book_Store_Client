@@ -7,6 +7,7 @@ import Books from "./Pages/Books/Books";
 import BooksDetails from "./Components/BooksDetails";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import DashboardLayout from "./Layouts/DashboardLayout";
 
 const Router = createBrowserRouter([
   {
@@ -50,6 +51,16 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "",
+        element: <h1>Hello Dashboard Profile</h1>,
+      },
+    ],
   },
 ]);
 
