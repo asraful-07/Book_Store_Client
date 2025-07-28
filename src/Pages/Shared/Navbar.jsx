@@ -1,0 +1,168 @@
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { FaBars, FaTimes, FaUser } from "react-icons/fa";
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
+  // Check if a link is active
+  const isActive = (path) => location.pathname === path;
+
+  return (
+    <div className="bg-transparent">
+      {/* Top Navbar */}
+      <div className="flex justify-between items-center px-4 py-3 md:px-8 container mx-auto">
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+          🎬 CineSpot
+        </h1>
+
+        <div className="md:hidden">
+          <button
+            onClick={toggleSidebar}
+            className="p-2 text-gray-700 hover:text-indigo-600 transition-all"
+          >
+            {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          </button>
+        </div>
+
+        <ul className="hidden md:flex gap-6 items-center">
+          <li>
+            <NavLink
+              to="/"
+              className={`px-4 py-2 transition-colors ${
+                isActive("/")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className={`px-4 py-2 transition-colors ${
+                isActive("/about")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={`px-4 py-2 transition-colors ${
+                isActive("/contact")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/books"
+              className={`px-4 py-2 transition-colors ${
+                isActive("/contact")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              All Books
+            </NavLink>
+          </li>
+          <li>
+            <button className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md flex items-center justify-center gap-2 border border-indigo-500">
+              <FaUser className="inline" /> Sign In
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      {/* Sidebar (Mobile) */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-4 border-b border-gray-200 flex justify-between items-center">
+          <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+            🎬 CineSpot
+          </h2>
+          <button
+            onClick={toggleSidebar}
+            className="p-2 text-gray-700 hover:text-indigo-600"
+          >
+            <FaTimes size={20} />
+          </button>
+        </div>
+        <ul className="flex flex-col p-4 space-y-2">
+          <li>
+            <NavLink
+              to="/"
+              onClick={toggleSidebar}
+              className={`block px-4 py-3 ${
+                isActive("/")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              onClick={toggleSidebar}
+              className={`block px-4 py-3 ${
+                isActive("/about")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              onClick={toggleSidebar}
+              className={`block px-4 py-3 ${
+                isActive("/contact")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/books"
+              onClick={toggleSidebar}
+              className={`block px-4 py-3 ${
+                isActive("/contact")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
+                  : "text-gray-700 hover:text-indigo-600"
+              }`}
+            >
+              All Movies
+            </NavLink>
+          </li>
+          <li className="mt-4">
+            <button className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md flex items-center justify-center gap-2 border border-indigo-500">
+              <FaUser className="inline" /> Sign In
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
