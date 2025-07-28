@@ -42,7 +42,7 @@ const BooksDetails = () => {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12">
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div className="overflow-hidden">
         <div className="md:flex">
           {/* Left Side - Image Gallery */}
           <div className="md:w-1/2 p-6">
