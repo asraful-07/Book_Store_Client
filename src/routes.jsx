@@ -8,6 +8,12 @@ import BooksDetails from "./Components/BooksDetails";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import DashboardLayout from "./Layouts/DashboardLayout";
+import AddBook from "./Components/AddBook";
+import ManageUser from "./Pages/Admin/ManageUser";
+import Settings from "./Pages/Admin/Settings";
+import MyBooks from "./Pages/Users/MyBooks";
+import UserProfile from "./Pages/Users/UserProfile";
+import ManageBooks from "./Pages/Admin/ManageBooks";
 
 const Router = createBrowserRouter([
   {
@@ -59,6 +65,32 @@ const Router = createBrowserRouter([
       {
         path: "",
         element: <h1>Hello Dashboard Profile</h1>,
+      },
+      // Admin work
+      {
+        path: "addBooks",
+        element: <AddBook />,
+      },
+      {
+        path: "users",
+        element: <ManageUser />,
+      },
+      {
+        path: "books",
+        element: <ManageBooks />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
+      },
+      // Users work
+      {
+        path: "MyBooks",
+        element: <MyBooks />,
+      },
+      {
+        path: "usersProfile",
+        element: <UserProfile />,
       },
     ],
   },

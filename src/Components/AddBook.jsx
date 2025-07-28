@@ -44,13 +44,13 @@ const AddBook = () => {
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-10">
-      <h1 className="text-3xl font-bold mb-8 text-center text-indigo-700">
+      <h1 className="text-3xl font-bold mb-8 text-start text-indigo-700">
         Add New Book
       </h1>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white shadow-lg rounded-xl p-8 max-w-4xl mx-auto space-y-6 border border-indigo-100"
+        className="p-8 max-w-4xl mx-auto space-y-6 border border-indigo-100"
       >
         <div>
           {/* Basic Information */}
