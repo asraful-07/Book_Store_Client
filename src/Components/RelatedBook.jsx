@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import { BsPencilSquare } from "react-icons/bs";
+import { LuSlidersHorizontal } from "react-icons/lu";
 
 const RelatedBook = ({ bookId }) => {
   const [relatedBooks, setRelatedBooks] = useState([]);
+  const [favorites, setFavorites] = useState({});
+
+  const toggleFavorite = (id) => {
+    setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   useEffect(() => {
     if (bookId) {
@@ -14,44 +23,72 @@ const RelatedBook = ({ bookId }) => {
   }, [bookId]);
 
   return (
-    <div className="mt-10">
-      <h2 className="text-2xl font-semibold mb-6 text-indigo-600 border-b pb-2">
-        Related Books
-      </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <div className="container mx-auto px-4 md:px-8 py-6">
+      <h2 className="text-2xl font-bold text-indigo-700 mb-4">Related Books</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {relatedBooks.map((book) => (
-          <div
-            key={book._id}
-            className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
-          >
-            <div className="h-48 bg-gray-200 flex items-center justify-center">
-              {book.image ? (
-                <img
-                  src={book.image}
-                  alt={book.name}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <span className="text-gray-500">No Image</span>
-              )}
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-bold mb-1 line-clamp-1">
+          <Link to={`/booksDetails/${book._id}`} key={book._id}>
+            <div className="relative border border-indigo-200 rounded-lg p-4 shadow hover:shadow-md transition duration-300 bg-white group">
+              {/* Hoverable Image */}
+              <div className="relative w-full h-64 overflow-hidden rounded-md mb-4">
+                {book?.imageUrls?.map((url, index) => (
+                  <img
+                    key={index}
+                    src={url}
+                    alt={book?.name}
+                    className={`w-full h-full object-cover absolute top-0 left-0 transition-opacity duration-500 ${
+                      index === 0
+                        ? "opacity-100"
+                        : "opacity-0 group-hover:opacity-100"
+                    }`}
+                  />
+                ))}
+
+                {/* Action buttons on hover */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex justify-center space-x-4">
+                    <button
+                      className="text-white hover:text-pink-500"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleFavorite(book._id);
+                      }}
+                    >
+                      <FaHeart
+                        className={`text-xl ${
+                          favorites[book._id]
+                            ? "text-pink-500 fill-pink-500"
+                            : "text-white"
+                        }`}
+                      />
+                    </button>
+                    <button className="text-white hover:text-indigo-300">
+                      <FaShoppingCart className="text-xl" />
+                    </button>
+                    <button className="text-white hover:text-indigo-300">
+                      <BsPencilSquare className="text-xl" />
+                    </button>
+                    <button className="text-white hover:text-indigo-300">
+                      <LuSlidersHorizontal className="text-xl" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Book Info */}
+              <h2 className="text-lg font-semibold text-indigo-800 mb-2">
                 {book.name}
-              </h3>
-              <p className="text-sm text-gray-600 mb-1">by {book.author}</p>
-              <div className="flex justify-between items-center mt-2">
-                <span className="text-sm bg-indigo-100 text-indigo-800 px-2 py-1 rounded">
-                  {book.productType}
-                </span>
-                {book.price && (
-                  <span className="font-bold text-indigo-600">
-                    ${book.price.toFixed(2)}
-                  </span>
+              </h2>
+              <div className="flex items-center gap-2">
+                <p className="text-purple-600 font-bold">${book?.price}</p>
+                {book?.oldPrice && (
+                  <p className="line-through text-gray-400 text-sm">
+                    ${book?.oldPrice}
+                  </p>
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
