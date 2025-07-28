@@ -54,20 +54,6 @@ const BooksDetails = () => {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              {/* <div className="grid grid-cols-4 gap-2">
-                {imageUrls.map((img, index) => (
-                  <div
-                    key={index}
-                    className="border rounded-md overflow-hidden cursor-pointer hover:border-indigo-500"
-                  >
-                    <img
-                      src={img}
-                      alt={`${name} ${index + 1}`}
-                      className="w-full h-20 object-cover"
-                    />
-                  </div>
-                ))}
-              </div> */}
             </div>
           </div>
 
