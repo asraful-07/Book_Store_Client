@@ -29,7 +29,7 @@ const RelatedBook = ({ bookId }) => {
         {relatedBooks.map((book) => (
           <Link to={`/booksDetails/${book._id}`} key={book._id}>
             <div className="relative border border-indigo-200 rounded-lg p-4 shadow hover:shadow-md transition duration-300 bg-white group">
-              {/* Hoverable Image */}
+              {/* Hover-able Image */}
               <div className="relative w-full h-64 overflow-hidden rounded-md mb-4">
                 {book?.imageUrls?.map((url, index) => (
                   <img
