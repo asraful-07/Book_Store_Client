@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={toggleSidebar}
-            className="p-2 text-gray-700 hover:text-indigo-600 transition-all"
+            className="p-2 text-gray-700 hover:text-green-600 transition-all"
           >
             {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </button>
@@ -36,8 +36,8 @@ const Navbar = () => {
               to="/"
               className={`px-4 py-2 transition-colors ${
                 isActive("/")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               Home

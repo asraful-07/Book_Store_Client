@@ -24,40 +24,75 @@ const DashboardLayout = () => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Close mobile menu on larger screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (loading)
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-purple-600"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
       </div>
     );
 
   if (!user) return <Navigate to="/login" replace />;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
       {/* Mobile Header */}
-      <div className="md:hidden bg-black text-white p-4 flex justify-between items-center">
-        <h2 className="text-xl font-bold">Dashboard</h2>
+      <div className="md:hidden bg-gray-900 text-white p-4 flex justify-between items-center">
+        <Link to="/dashboard" className="flex items-center">
+          <img src={logo} alt="Logo" className="h-8 mr-2" />
+          <h2 className="text-xl font-bold">Dashboard</h2>
+        </Link>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className="p-2 focus:outline-none"
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          {isMobileMenuOpen ? (
+            <FaTimes size={20} className="text-orange-400" />
+          ) : (
+            <FaBars size={20} className="text-green-400" />
+          )}
         </button>
       </div>
 
       {/* Sidebar */}
       <div
         className={`${sidebarCollapsed ? "md:w-20" : "md:w-64"} 
-        ${isMobileMenuOpen ? "block" : "hidden"} 
+        ${isMobileMenuOpen ? "fixed inset-0 z-50" : "hidden"} 
         md:block bg-gray-900 text-white transition-all duration-300 flex-shrink-0`}
       >
         <div className="p-4 h-full flex flex-col">
+          {/* Mobile Close Button */}
+          <div className="flex justify-between items-center mb-4 md:hidden">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="w-28 h-10" />
+            </Link>
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 focus:outline-none text-orange-400"
+            >
+              <FaTimes size={20} />
+            </button>
+          </div>
+
           {/* Desktop Collapse Button */}
           <div className="hidden md:flex justify-end mb-4">
             <button
               onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-1 rounded-full hover:bg-gray-800 text-purple-400"
+              className="p-1 rounded-full hover:bg-gray-800 text-green-400"
+              aria-label={
+                sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"
+              }
             >
               {sidebarCollapsed ? "»" : "«"}
             </button>
@@ -74,7 +109,7 @@ const DashboardLayout = () => {
 
           {/* Navigation */}
           <nav className="flex-1">
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {user.role === "admin" ? (
                 <>
                   <li>
@@ -82,8 +117,8 @@ const DashboardLayout = () => {
                       to="/dashboard"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaHome className="text-lg mr-3" />
@@ -95,8 +130,8 @@ const DashboardLayout = () => {
                       to="/dashboard/addBooks"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/addBooks"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaBookOpen className="text-lg mr-3" />
@@ -108,8 +143,8 @@ const DashboardLayout = () => {
                       to="/dashboard/users"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/users"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaUsers className="text-lg mr-3" />
@@ -121,8 +156,8 @@ const DashboardLayout = () => {
                       to="/dashboard/books"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/books"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaBook className="text-lg mr-3" />
@@ -134,8 +169,8 @@ const DashboardLayout = () => {
                       to="/dashboard/settings"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/settings"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaUserCog className="text-lg mr-3" />
@@ -150,8 +185,8 @@ const DashboardLayout = () => {
                       to="/dashboard"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaHome className="text-lg mr-3" />
@@ -163,8 +198,8 @@ const DashboardLayout = () => {
                       to="/dashboard/MyBooks"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/MyBooks"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaBook className="text-lg mr-3" />
@@ -176,8 +211,8 @@ const DashboardLayout = () => {
                       to="/dashboard/usersProfile"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
                         location.pathname === "/dashboard/usersProfile"
-                          ? "bg-purple-600 text-white"
-                          : "hover:bg-gray-800"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
                       <FaUserCog className="text-lg mr-3" />
@@ -196,7 +231,7 @@ const DashboardLayout = () => {
             }`}
           >
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-medium">
                 {user.name.charAt(0).toUpperCase()}
               </div>
               {!sidebarCollapsed && (
@@ -208,9 +243,9 @@ const DashboardLayout = () => {
             </div>
             <button
               onClick={logout}
-              className={`w-full flex items-center p-3 rounded-lg hover:bg-gray-800 transition-colors ${
+              className={`w-full flex items-center p-3 rounded-lg hover:bg-white/5 transition-colors ${
                 sidebarCollapsed ? "justify-center" : ""
-              }`}
+              } text-green-400 hover:text-green-300`}
             >
               <FaSignOutAlt />
               {!sidebarCollapsed && <span className="ml-3">Logout</span>}
@@ -221,9 +256,9 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 overflow-x-hidden">
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           {/* Breadcrumbs */}
-          <div className="mb-6 text-sm text-gray-600">
+          <div className="mb-4 md:mb-6 text-sm text-gray-600">
             Dashboard{" "}
             {location.pathname
               .split("/")
@@ -240,7 +275,7 @@ const DashboardLayout = () => {
           </div>
 
           {/* Content */}
-          <div className="bg-white rounded-lg shadow p-6">
+          <div className="bg-white rounded-lg shadow p-4 md:p-6">
             <Outlet />
           </div>
         </div>
