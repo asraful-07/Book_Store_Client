@@ -8,7 +8,7 @@ const Books = () => {
 
   useEffect(() => {
     axiosSecure
-      .get("http://localhost:8080/books")
+      .get("/books")
       .then((res) => {
         setBooks(res.data);
       })
