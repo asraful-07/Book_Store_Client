@@ -36,7 +36,7 @@ const Login = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  //
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-green-50 p-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
