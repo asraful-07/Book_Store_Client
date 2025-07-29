@@ -6,12 +6,13 @@ import {
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
-  FaFilm,
-  FaTicketAlt,
+  FaBook,
+  FaShoppingCart,
   FaStar,
   FaCalendarAlt,
 } from "react-icons/fa";
-import { MdTheaters } from "react-icons/md";
+import { MdMenuBook } from "react-icons/md";
+import logo from "../../assets/images/logo.png";
 
 export default function Footer() {
   return (
@@ -22,51 +23,51 @@ export default function Footer() {
           {/* About Section */}
           <div>
             <div className="flex items-center mb-4">
-              <MdTheaters className="text-3xl mr-2 bg-gradient-to-r from-indigo-500 to-purple-600 p-1 rounded" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
-                CineSpot
+              <MdMenuBook className="text-3xl mr-2 bg-gradient-to-r from-green-500 to-emerald-600 p-1 rounded" />
+              <span className="text-2xl font-bold">
+                <img src={logo} alt="BookStore Logo" className="w-28 h-10" />
               </span>
             </div>
             <p className="mt-2 text-gray-300">
-              Your ultimate destination for movie magic. We bring you the latest
-              blockbusters, timeless classics, and everything in between.
-              Experience cinema like never before with our premium services.
+              Your premier destination for literary treasures. We offer a vast
+              collection of books across all genres, from timeless classics to
+              contemporary bestsellers. Discover your next great read with us.
             </p>
 
             {/* Social Links */}
             <div className="flex space-x-4 mt-6">
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-indigo-500 to-purple-600 transition-all"
+                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-green-500 to-emerald-600 transition-all"
               >
                 <FaFacebookF />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-indigo-500 to-purple-600 transition-all"
+                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-green-500 to-emerald-600 transition-all"
               >
                 <FaTwitter />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-indigo-500 to-purple-600 transition-all"
+                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-green-500 to-emerald-600 transition-all"
               >
                 <FaInstagram />
               </a>
               <a
                 href="#"
-                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-indigo-500 to-purple-600 transition-all"
+                className="p-2 rounded-full bg-gray-800 hover:bg-gradient-to-r from-green-500 to-emerald-600 transition-all"
               >
                 <FaLinkedinIn />
               </a>
             </div>
           </div>
 
-          {/* Movie Categories */}
+          {/* Book Categories */}
           <div>
             <h6 className="text-lg font-semibold mb-4 flex items-center">
-              <FaFilm className="mr-2 bg-gradient-to-r from-indigo-500 to-purple-600 p-1 rounded" />
-              Movie Genres
+              <FaBook className="mr-2 bg-gradient-to-r from-green-500 to-emerald-600 p-1 rounded" />
+              Book Categories
             </h6>
             <ul className="space-y-3 text-gray-400">
               <li>
@@ -74,8 +75,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Action & Adventure
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                  Fiction & Literature
                 </a>
               </li>
               <li>
@@ -83,8 +84,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                  Sci-Fi & Fantasy
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Science & Technology
                 </a>
               </li>
               <li>
@@ -92,8 +93,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Comedy
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                  Business & Finance
                 </a>
               </li>
               <li>
@@ -101,8 +102,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                  Drama
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Children's Books
                 </a>
               </li>
               <li>
@@ -110,8 +111,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Horror & Thriller
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                  Self-Help & Wellness
                 </a>
               </li>
             </ul>
@@ -120,7 +121,7 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h6 className="text-lg font-semibold mb-4 flex items-center">
-              <FaTicketAlt className="mr-2 bg-gradient-to-r from-indigo-500 to-purple-600 p-1 rounded" />
+              <FaShoppingCart className="mr-2 bg-gradient-to-r from-green-500 to-emerald-600 p-1 rounded" />
               Our Services
             </h6>
             <ul className="space-y-3 text-gray-400">
@@ -129,8 +130,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                  Online Ticket Booking
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Online Bookstore
                 </a>
               </li>
               <li>
@@ -138,8 +139,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Private Screenings
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                  Book Recommendations
                 </a>
               </li>
               <li>
@@ -147,8 +148,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                  Movie Merchandise
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Author Events
                 </a>
               </li>
               <li>
@@ -156,8 +157,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                  Loyalty Programs
+                  <span className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
+                  Book Club Resources
                 </a>
               </li>
               <li>
@@ -165,8 +166,8 @@ export default function Footer() {
                   href="#"
                   className="hover:underline hover:text-white flex items-center"
                 >
-                  <span className="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>
-                  Special Events
+                  <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                  Corporate Gifting
                 </a>
               </li>
             </ul>
@@ -175,16 +176,16 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h6 className="text-lg font-semibold mb-4 flex items-center">
-              <FaStar className="mr-2 bg-gradient-to-r from-indigo-500 to-purple-600 p-1 rounded" />
+              <FaStar className="mr-2 bg-gradient-to-r from-green-500 to-emerald-600 p-1 rounded" />
               Contact Us
             </h6>
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-start">
-                <FaMapMarkerAlt className="mt-1 mr-2 flex-shrink-0 text-purple-400" />
-                <span>123 Cinema Avenue, Movie City, MC 12345</span>
+                <FaMapMarkerAlt className="mt-1 mr-2 flex-shrink-0 text-emerald-400" />
+                <span>123 Book Street, Literary District, BK 12345</span>
               </li>
               <li className="flex items-center">
-                <FaPhoneAlt className="mr-2 text-indigo-400" />
+                <FaPhoneAlt className="mr-2 text-green-400" />
                 <a
                   href="tel:+11234567890"
                   className="hover:underline hover:text-white"
@@ -193,24 +194,24 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-center">
-                <FaEnvelope className="mr-2 text-purple-400" />
+                <FaEnvelope className="mr-2 text-emerald-400" />
                 <a
-                  href="mailto:info@cinespot.com"
+                  href="mailto:info@bookhaven.com"
                   className="hover:underline hover:text-white"
                 >
-                  info@cinespot.com
+                  info@bookhaven.com
                 </a>
               </li>
               <li className="pt-2">
                 <div className="flex items-center">
-                  <FaCalendarAlt className="mr-2 text-indigo-400" />
+                  <FaCalendarAlt className="mr-2 text-green-400" />
                   <h6 className="font-medium text-white">Opening Hours</h6>
                 </div>
                 <div className="ml-6">
-                  <p>Mon-Fri: 10am - 11pm</p>
-                  <p>Sat-Sun: 9am - 1am</p>
-                  <p className="text-xs mt-1 text-purple-300">
-                    *Extended hours for premieres
+                  <p>Mon-Fri: 9am - 8pm</p>
+                  <p>Sat-Sun: 10am - 6pm</p>
+                  <p className="text-xs mt-1 text-emerald-300">
+                    *Extended hours during book launches
                   </p>
                 </div>
               </li>
@@ -221,7 +222,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="border-t border-gray-800 pt-6 flex flex-col lg:flex-row justify-between items-center text-gray-400 text-sm">
           <p className="text-center lg:text-left w-full">
-            &copy; {new Date().getFullYear()} CineSpot. All rights reserved. |
+            &copy; {new Date().getFullYear()} BookHaven. All rights reserved. |
             <a href="#" className="hover:underline hover:text-white ml-1">
               Privacy Policy
             </a>{" "}
@@ -233,11 +234,10 @@ export default function Footer() {
 
           <div className="flex items-center mt-4 lg:mt-0">
             <span className="mr-2">Payments:</span>
-
             <div className="p-1 bg-white rounded shadow-md w-60 md:w-96 h-auto">
               <img
                 src="https://i.ibb.co/QFNjq6Qs/footer.png"
-                alt="Footer Payment Options"
+                alt="Payment Options"
                 className="w-full h-auto object-contain"
               />
             </div>
@@ -247,3 +247,4 @@ export default function Footer() {
     </footer>
   );
 }
+//

@@ -48,8 +48,8 @@ const Navbar = () => {
               to="/about"
               className={`px-4 py-2 transition-colors ${
                 isActive("/about")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               About
@@ -60,8 +60,8 @@ const Navbar = () => {
               to="/contact"
               className={`px-4 py-2 transition-colors ${
                 isActive("/contact")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               Contact
@@ -72,8 +72,8 @@ const Navbar = () => {
               to="/books"
               className={`px-4 py-2 transition-colors ${
                 isActive("/books")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               All Books
@@ -82,7 +82,7 @@ const Navbar = () => {
           <li className="relative">
             <button
               onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center gap-2 p-2 text-gray-700 hover:text-indigo-600"
+              className="flex items-center gap-2 p-2 text-gray-700 hover:text-green-600"
             >
               <FaRegUserCircle size={36} />
             </button>
@@ -142,12 +142,12 @@ const Navbar = () => {
         }`}
       >
         <div className="p-4 border-b border-gray-200 flex justify-between items-center">
-          <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-xl font-bold bg-gradient-to-r from-green-500 to-orange-600 bg-clip-text text-transparent">
             <img src={logo} alt="" />
           </h2>
           <button
             onClick={toggleSidebar}
-            className="p-2 text-gray-700 hover:text-indigo-600"
+            className="p-2 text-gray-700 hover:text-green-600"
           >
             <FaTimes size={20} />
           </button>
@@ -159,8 +159,8 @@ const Navbar = () => {
               onClick={toggleSidebar}
               className={`block px-4 py-3 ${
                 isActive("/")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               Home
@@ -172,8 +172,8 @@ const Navbar = () => {
               onClick={toggleSidebar}
               className={`block px-4 py-3 ${
                 isActive("/about")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               About
@@ -185,8 +185,8 @@ const Navbar = () => {
               onClick={toggleSidebar}
               className={`block px-4 py-3 ${
                 isActive("/contact")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               Contact
@@ -198,8 +198,8 @@ const Navbar = () => {
               onClick={toggleSidebar}
               className={`block px-4 py-3 ${
                 isActive("/books")
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-600 font-medium"
-                  : "text-gray-700 hover:text-indigo-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
               }`}
             >
               All Books
@@ -211,7 +211,7 @@ const Navbar = () => {
                 <Link
                   to="/dashboard"
                   onClick={toggleSidebar}
-                  className="block w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md text-center"
+                  className="block w-full px-4 py-3 rounded-full bg-gradient-to-r from-green-500 to-orange-600 text-white font-semibold hover:from-green-600 hover:to-orange-700 transition-all shadow-md text-center"
                 >
                   Dashboard
                 </Link>
@@ -230,14 +230,14 @@ const Navbar = () => {
                 <Link
                   to="/login"
                   onClick={toggleSidebar}
-                  className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold hover:from-indigo-600 hover:to-purple-700 transition-all shadow-md text-center flex items-center justify-center gap-2"
+                  className="w-full px-4 py-3 rounded-full bg-gradient-to-r from-green-500 to-orange-600 text-white font-semibold hover:from-green-600 hover:to-orange-700 transition-all shadow-md text-center flex items-center justify-center gap-2"
                 >
                   <FaSignInAlt /> Sign In
                 </Link>
                 <Link
                   to="/register"
                   onClick={toggleSidebar}
-                  className="w-full mt-2 px-4 py-3 rounded-full border border-indigo-500 text-indigo-600 font-semibold hover:bg-indigo-50 transition-all shadow-md text-center flex items-center justify-center gap-2"
+                  className="w-full mt-2 px-4 py-3 rounded-full border border-green-500 text-green-600 font-semibold hover:bg-green-50 transition-all shadow-md text-center flex items-center justify-center gap-2"
                 >
                   <FaUserPlus /> Sign Up
                 </Link>
