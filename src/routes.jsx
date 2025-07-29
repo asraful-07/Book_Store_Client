@@ -14,12 +14,17 @@ import Settings from "./Pages/Admin/Settings";
 import MyBooks from "./Pages/Users/MyBooks";
 import UserProfile from "./Pages/Users/UserProfile";
 import ManageBooks from "./Pages/Admin/ManageBooks";
+import Error from "./Pages/Error/Error";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts />,
     children: [
+      {
+        path: "*",
+        element: <Error />,
+      },
       {
         path: "/",
         element: <Home />,
@@ -85,6 +90,10 @@ const Router = createBrowserRouter([
       {
         path: "usersProfile",
         element: <UserProfile />,
+      },
+      {
+        path: "*",
+        element: <Error />,
       },
     ],
   },
