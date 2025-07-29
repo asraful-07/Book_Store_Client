@@ -63,7 +63,7 @@ const Books = () => {
             </button>
 
             {/* Page Numbers */}
-            {[1, 2, 3, 4, 5].map((p) => (
+            {[1, 2, 3, 4, 5, 6].map((p) => (
               <button
                 key={p}
                 onClick={() => setPage(p)}
