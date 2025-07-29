@@ -15,6 +15,7 @@ import MyBooks from "./Pages/Users/MyBooks";
 import UserProfile from "./Pages/Users/UserProfile";
 import ManageBooks from "./Pages/Admin/ManageBooks";
 import Error from "./Pages/Error/Error";
+import UpdateBook from "./Components/UpdateBook";
 
 const Router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:8080/book/${params.id}`),
       },
+      // {
+      //   path: "/updateBook/:id",
+      //   element: <UpdateBook />,
+      // },
     ],
   },
   {
@@ -77,6 +82,10 @@ const Router = createBrowserRouter([
       {
         path: "books",
         element: <ManageBooks />,
+      },
+      {
+        path: "updateBook/:id",
+        element: <UpdateBook />,
       },
       {
         path: "settings",
