@@ -62,7 +62,7 @@ const BooksCard = ({ book }) => {
                 />
               </button>
               <button
-                className="text-white hover:text-blue-600 transition-colors"
+                className="text-white hover:text-green-600 transition-colors"
                 aria-label="Add to cart"
               >
                 <FaShoppingCart className="text-xl" />
@@ -74,7 +74,7 @@ const BooksCard = ({ book }) => {
                 <BsPencilSquare className="text-xl" />
               </button>
               <button
-                className="text-white hover:text-red-600 transition-colors"
+                className="text-white hover:text-green-600 transition-colors"
                 aria-label="View details"
               >
                 <LuSlidersHorizontal className="text-xl" />
