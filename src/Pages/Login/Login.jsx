@@ -38,12 +38,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-green-50 p-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Decorative header */}
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-center">
+        <div className="bg-gradient-to-r from-orange-600 to-green-600 p-6 text-center">
           <h2 className="text-2xl font-bold text-white">Welcome Back</h2>
-          <p className="text-purple-100 mt-1">Sign in to continue</p>
+          <p className="text-orange-100 mt-1">Sign in to continue</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5">
@@ -63,7 +63,7 @@ const Login = () => {
                 })}
                 type="email"
                 placeholder="Email Address"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">
@@ -87,7 +87,7 @@ const Login = () => {
                 })}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-600 focus:border-transparent"
               />
               <button
                 type="button"
@@ -108,7 +108,7 @@ const Login = () => {
           <div className="text-right">
             <Link
               to="/forgot-password"
-              className="text-sm text-purple-600 hover:text-purple-800 transition-colors"
+              className="text-sm text-orange-600 hover:text-orange-800 transition-colors"
             >
               Forgot password?
             </Link>
@@ -117,7 +117,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center"
+            className="w-full bg-gradient-to-r from-orange-600 to-green-600 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:from-orange-700 hover:to-green-700 transition-all duration-300 flex items-center justify-center"
           >
             Sign In <FaArrowRight className="ml-2" />
           </button>
@@ -129,7 +129,7 @@ const Login = () => {
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-purple-600 font-semibold hover:text-purple-800 transition-colors"
+              className="text-orange-600 font-semibold hover:text-orange-800 transition-colors"
             >
               Create Account
             </Link>

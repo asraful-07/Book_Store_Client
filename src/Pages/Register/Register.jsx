@@ -36,14 +36,15 @@ const Register = () => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  //
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-50 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-orange-50 p-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden">
         {/* Decorative header */}
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-center">
+        <div className="bg-gradient-to-r from-green-600 to-orange-600 p-6 text-center">
           <h2 className="text-2xl font-bold text-white">Create Your Account</h2>
-          <p className="text-purple-100 mt-1">Join us today!</p>
+          <p className="text-green-100 mt-1">Join us today!</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-5">
@@ -56,7 +57,7 @@ const Register = () => {
               <input
                 {...reg("name", { required: "Name is required" })}
                 placeholder="Full Name"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600">
@@ -79,7 +80,7 @@ const Register = () => {
                   },
                 })}
                 placeholder="Email Address"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">
@@ -103,7 +104,7 @@ const Register = () => {
                 })}
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                className="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent"
               />
               <button
                 type="button"
@@ -123,7 +124,7 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center"
+            className="w-full bg-gradient-to-r from-green-600 to-orange-600 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:from-green-700 hover:to-orange-700 transition-all duration-300 flex items-center justify-center"
           >
             Register Now <FaArrowRight className="ml-2" />
           </button>
@@ -135,7 +136,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="text-purple-600 font-semibold hover:text-purple-800 transition-colors"
+              className="text-green-600 font-semibold hover:text-green-800 transition-colors"
             >
               Sign In
             </Link>
