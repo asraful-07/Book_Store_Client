@@ -24,12 +24,6 @@ const Router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      //    {
-      //     path: "/movie/:id",
-      //     element: <MovieDetails />,
-      //     loader: ({ params }) =>
-      //       fetch(`http://localhost:8080/movies/${params.id}`),
-      //   },
       {
         path: "/about",
         element: <AboutUs />,

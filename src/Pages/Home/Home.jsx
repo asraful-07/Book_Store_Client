@@ -1,9 +1,9 @@
-import AddBook from "../../Components/AddBook";
+import Banner from "../../Components/Banner";
 
 const Home = () => {
   return (
     <div>
-      <AddBook />
+      <Banner />
     </div>
   );
 };
