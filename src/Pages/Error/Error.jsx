@@ -27,7 +27,7 @@ const Error = () => {
           Oops!
         </h1>
 
-        <h2 className="text-2xl md:text-3xl font-semibold text-green-700 mb-6">
+        <h2 className="text-2xl md:text-3xl font-semibold text-green-800 mb-6">
           404 - Page Not Found
         </h2>
 
