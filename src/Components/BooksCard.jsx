@@ -62,19 +62,19 @@ const BooksCard = ({ book }) => {
                 />
               </button>
               <button
-                className="text-white hover:text-indigo-300 transition-colors"
+                className="text-white hover:text-green-900 transition-colors"
                 aria-label="Add to cart"
               >
                 <FaShoppingCart className="text-xl" />
               </button>
               <button
-                className="text-white hover:text-green-300 transition-colors"
+                className="text-white hover:text-green-900 transition-colors"
                 aria-label="View details"
               >
                 <BsPencilSquare className="text-xl" />
               </button>
               <button
-                className="text-white hover:text-green-300 transition-colors"
+                className="text-white hover:text-green-900 transition-colors"
                 aria-label="View details"
               >
                 <LuSlidersHorizontal className="text-xl" />
@@ -84,9 +84,9 @@ const BooksCard = ({ book }) => {
         </div>
 
         {/* Product info */}
-        <h2 className="text-lg font-semibold text-indigo-800 mb-2">{name}</h2>
+        <h2 className="text-lg font-semibold text-green-800 mb-2">{name}</h2>
         <div className="flex items-center gap-2">
-          <p className="text-purple-600 font-bold">${price}</p>
+          <p className="text-green-900 font-bold">${price}</p>
           {oldPrice && (
             <p className="line-through text-gray-400 text-sm">${oldPrice}</p>
           )}

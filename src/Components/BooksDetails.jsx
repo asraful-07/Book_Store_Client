@@ -64,7 +64,7 @@ const BooksDetails = () => {
               <p className="text-lg text-gray-600 mb-4">by {author}</p>
 
               <div className="flex items-center mb-4">
-                <span className="text-2xl font-bold text-indigo-600">
+                <span className="text-2xl font-bold text-green-700">
                   ${price}
                 </span>
                 {oldPrice && (
@@ -97,7 +97,7 @@ const BooksDetails = () => {
                   {showFullDescription ? description : `${shortDescription}...`}
                   <button
                     onClick={() => setShowFullDescription(!showFullDescription)}
-                    className="ml-2 text-indigo-600 hover:underline"
+                    className="ml-2 text-green-700 hover:underline"
                   >
                     {showFullDescription ? "Show Less" : "Read More"}
                   </button>
@@ -126,7 +126,7 @@ const BooksDetails = () => {
               </div>
 
               <div className="flex flex-wrap gap-3 mb-8">
-                <button className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition">
+                <button className="flex-1 bg-green-700 hover:bg-green-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition">
                   <FaCartPlus className="mr-2" />
                   Add to Cart
                 </button>
@@ -145,7 +145,7 @@ const BooksDetails = () => {
                   />
                   {isWishlist ? "Wishlisted" : "Wishlist"}
                 </button>
-                <button className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                <button className="flex-1 bg-gradient-to-r from-green-700 to-orange-600 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                   Buy it Now
                 </button>
               </div>
@@ -203,8 +203,8 @@ const BooksDetails = () => {
               onClick={() => setActiveTab(tab)}
               className={`capitalize px-6 py-2 font-semibold border-b-2 transition-all duration-300 ${
                 activeTab === tab
-                  ? "border-indigo-600 text-indigo-600"
-                  : "border-transparent text-gray-500 hover:text-indigo-500"
+                  ? "border-green-700 text-green-700"
+                  : "border-transparent text-gray-500 hover:text-green-700"
               }`}
             >
               {tab}
@@ -213,10 +213,10 @@ const BooksDetails = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white rounded-md shadow p-6 border border-indigo-100">
+        <div className="bg-white rounded-md shadow p-6 border border-green-700">
           {activeTab === "description" && (
             <div>
-              <h2 className="text-lg font-bold text-purple-700 mb-2">
+              <h2 className="text-lg font-bold text-green-800 mb-2">
                 Book Description
               </h2>
               <p className="text-gray-700 leading-relaxed">{description}</p>
@@ -225,7 +225,7 @@ const BooksDetails = () => {
 
           {activeTab === "reviews" && (
             <div className="text-gray-700">
-              <h2 className="text-lg font-bold text-purple-700 mb-2">
+              <h2 className="text-lg font-bold text-green-800 mb-2">
                 User Reviews
               </h2>
               <p>No reviews yet. Be the first to review this book!</p>
@@ -234,7 +234,7 @@ const BooksDetails = () => {
 
           {activeTab === "comments" && (
             <div>
-              <h2 className="text-lg font-bold text-purple-700 mb-2">
+              <h2 className="text-lg font-bold text-green-800 mb-2">
                 Comments
               </h2>
               {/* Facebook Comments Plugin */}

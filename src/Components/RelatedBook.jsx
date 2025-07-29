@@ -24,7 +24,7 @@ const RelatedBook = ({ bookId }) => {
 
   return (
     <div className="container mx-auto px-4 py-10">
-      <h2 className="text-2xl font-bold text-indigo-700 mb-4">Related Books</h2>
+      <h2 className="text-2xl font-bold text-green-700 mb-4">Related Books</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {relatedBooks.map((book) => (
           <Link to={`/booksDetails/${book._id}`} key={book._id}>
@@ -76,11 +76,11 @@ const RelatedBook = ({ bookId }) => {
               </div>
 
               {/* Book Info */}
-              <h2 className="text-lg font-semibold text-indigo-800 mb-2">
+              <h2 className="text-lg font-semibold text-green-800 mb-2">
                 {book.name}
               </h2>
               <div className="flex items-center gap-2">
-                <p className="text-purple-600 font-bold">${book?.price}</p>
+                <p className="text-green-900 font-bold">${book?.price}</p>
                 {book?.oldPrice && (
                   <p className="line-through text-gray-400 text-sm">
                     ${book?.oldPrice}
