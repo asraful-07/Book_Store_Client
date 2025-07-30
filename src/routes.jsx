@@ -16,6 +16,7 @@ import UserProfile from "./Pages/Users/UserProfile";
 import ManageBooks from "./Pages/Admin/ManageBooks";
 import Error from "./Pages/Error/Error";
 import UpdateBook from "./Components/UpdateBook";
+import Favorite from "./Pages/Users/Favorite";
 
 const Router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const Router = createBrowserRouter([
       {
         path: "usersProfile",
         element: <UserProfile />,
+      },
+      {
+        path: "favoriteBooks",
+        element: <Favorite />,
       },
       {
         path: "*",

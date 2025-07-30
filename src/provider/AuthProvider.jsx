@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const res = await axiosSecure.post("/login", { email, password });
-      setUser(res.data); // password বাদ দিয়ে server থেকে user পাঠাও
+      setUser(res.data);
       localStorage.setItem("user", JSON.stringify(res.data));
       return { success: true };
     } catch (err) {

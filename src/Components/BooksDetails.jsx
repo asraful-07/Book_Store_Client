@@ -11,9 +11,12 @@ import {
   FaPlus,
 } from "react-icons/fa";
 import RelatedBook from "./RelatedBook";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import { toast } from "react-toastify";
 
 const BooksDetails = () => {
   const book = useLoaderData();
+  const axiosSecure = useAxiosSecure();
   const {
     _id,
     name,
@@ -39,6 +42,23 @@ const BooksDetails = () => {
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () =>
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const handleAdd = async () => {
+    const data = {
+      name,
+      author,
+      price,
+      productType,
+      quantity,
+      imageUrls,
+    };
+    try {
+      await axiosSecure.post("/book-cart", data);
+      toast.success("Book added successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to save Book. Please try again.");
+    }
+  };
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12">
@@ -126,7 +146,10 @@ const BooksDetails = () => {
               </div>
 
               <div className="flex flex-wrap gap-3 mb-8">
-                <button className="flex-1 bg-green-700 hover:bg-green-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition">
+                <button
+                  onClick={handleAdd}
+                  className="flex-1 bg-green-700 hover:bg-green-700 text-white py-3 px-4 rounded-lg flex items-center justify-center transition"
+                >
                   <FaCartPlus className="mr-2" />
                   Add to Cart
                 </button>
