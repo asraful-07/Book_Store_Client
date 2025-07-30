@@ -56,7 +56,32 @@ const BooksDetails = () => {
     };
     try {
       await axiosSecure.post("/book-cart", data);
-      toast.success("Book added successfully!");
+      toast.success("Book added cart successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to save Book. Please try again.");
+    }
+  };
+
+  const handleFav = async () => {
+    if (isWishlist) {
+      toast.info("This book is already in your wishlist.");
+      return;
+    }
+    const data = {
+      name,
+      author,
+      price,
+      productType,
+      quantity,
+      imageUrls,
+      userEmail: user?.email,
+    };
+
+    try {
+      await axiosSecure.post("/favorites", data);
+      toast.success("Favorites Book added successfully!");
+      setIsWishlist(true);
     } catch (err) {
       console.error(err);
       toast.error("Failed to save Book. Please try again.");
@@ -157,7 +182,7 @@ const BooksDetails = () => {
                   Add to Cart
                 </button>
                 <button
-                  onClick={() => setIsWishlist(!isWishlist)}
+                  onClick={handleFav}
                   className={`flex-1 py-3 px-4 rounded-lg flex items-center justify-center transition border ${
                     isWishlist
                       ? "bg-pink-100 border-pink-300 text-pink-600"
@@ -165,12 +190,15 @@ const BooksDetails = () => {
                   }`}
                 >
                   <FaHeart
-                    className={`mr-2 ${
-                      isWishlist ? "text-pink-500 fill-pink-500" : ""
+                    className={`mr-2 text-lg ${
+                      isWishlist
+                        ? "text-pink-500 fill-pink-500"
+                        : "text-gray-500"
                     }`}
                   />
                   {isWishlist ? "Wishlisted" : "Wishlist"}
                 </button>
+
                 <button className="flex-1 bg-gradient-to-r from-green-700 to-orange-600 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300">
                   Buy it Now
                 </button>
