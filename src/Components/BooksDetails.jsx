@@ -13,10 +13,12 @@ import {
 import RelatedBook from "./RelatedBook";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { useAuth } from "../provider/AuthProvider";
 
 const BooksDetails = () => {
   const book = useLoaderData();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
   const {
     _id,
     name,
@@ -50,6 +52,7 @@ const BooksDetails = () => {
       productType,
       quantity,
       imageUrls,
+      userEmail: user?.email,
     };
     try {
       await axiosSecure.post("/book-cart", data);
