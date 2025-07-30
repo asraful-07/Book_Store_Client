@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import MyBookCard from "../../Components/MyBookCard";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../provider/AuthProvider";
 import { FiShoppingBag, FiTrash2, FiDollarSign } from "react-icons/fi";
 import { toast } from "react-toastify";
@@ -71,11 +71,6 @@ const MyBooks = () => {
     }
   };
 
-  // Go to payment
-  const handlePayment = () => {
-    navigate("/payment");
-  };
-
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       {/* Header */}
@@ -105,14 +100,15 @@ const MyBooks = () => {
             <FiTrash2 className="mr-2" />
             Clear All
           </button>
-          <button
-            onClick={handlePayment}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition flex items-center justify-center"
-            disabled={books.length === 0}
-          >
-            <FiDollarSign className="mr-2" />
-            Proceed to Payment
-          </button>
+          <Link to="/paymentHistory">
+            <button
+              className="bg-green-600 hover:bg-green-700 text-white px-4 py-4 rounded-lg transition flex items-center justify-center"
+              disabled={books.length === 0}
+            >
+              <FiDollarSign className="mr-2" />
+              Proceed to Payment
+            </button>
+          </Link>
         </div>
       </div>
 

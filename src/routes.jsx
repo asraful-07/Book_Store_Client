@@ -18,6 +18,7 @@ import Error from "./Pages/Error/Error";
 import UpdateBook from "./Components/UpdateBook";
 import Favorite from "./Pages/Users/Favorite";
 import PaymentHistory from "./Pages/Payment/PaymentHistory";
+import Completed from "./Pages/Users/Completed";
 
 const Router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const Router = createBrowserRouter([
       {
         path: "favoriteBooks",
         element: <Favorite />,
+      },
+      {
+        path: "completedOrders",
+        element: <Completed />,
       },
       {
         path: "*",
