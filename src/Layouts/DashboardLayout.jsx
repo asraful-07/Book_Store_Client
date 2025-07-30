@@ -207,7 +207,7 @@ const DashboardLayout = () => {
                       }`}
                     >
                       <FaBook className="text-lg mr-3" />
-                      {!sidebarCollapsed && <span>My Books</span>}
+                      {!sidebarCollapsed && <span>My Orders Books</span>}
                     </Link>
                   </li>
                   <li>
