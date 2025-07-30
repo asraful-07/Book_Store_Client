@@ -8,10 +8,14 @@ import {
   FaBars,
   FaTimes,
   FaBookOpen,
+  FaHeart,
+  FaCommentDots,
+  FaEnvelopeOpenText,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useAuth } from "../provider/AuthProvider";
 import logo from "../assets/images/logo.png";
+import { LuClipboardCheck } from "react-icons/lu";
 
 const DashboardLayout = () => {
   const { user, loading, logout } = useAuth();
@@ -182,15 +186,15 @@ const DashboardLayout = () => {
                 <>
                   <li>
                     <Link
-                      to="/dashboard"
+                      to="/dashboard/usersProfile"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
-                        location.pathname === "/dashboard"
+                        location.pathname === "/dashboard/usersProfile"
                           ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
                           : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
-                      <FaHome className="text-lg mr-3" />
-                      {!sidebarCollapsed && <span>Overview</span>}
+                      <FaUserCog className="text-lg mr-3" />
+                      {!sidebarCollapsed && <span>Profile</span>}
                     </Link>
                   </li>
                   <li>
@@ -208,15 +212,54 @@ const DashboardLayout = () => {
                   </li>
                   <li>
                     <Link
-                      to="/dashboard/usersProfile"
+                      to="/dashboard/completedOrders"
                       className={`flex items-center p-3 rounded-lg transition-colors ${
-                        location.pathname === "/dashboard/usersProfile"
+                        location.pathname === "/dashboard/completedOrders"
                           ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
                           : "hover:bg-white/5 hover:text-green-300 text-gray-300"
                       }`}
                     >
-                      <FaUserCog className="text-lg mr-3" />
-                      {!sidebarCollapsed && <span>Profile</span>}
+                      <LuClipboardCheck className="text-lg mr-3" />
+                      {!sidebarCollapsed && <span>Completed Orders</span>}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/favoriteBooks"
+                      className={`flex items-center p-3 rounded-lg transition-colors ${
+                        location.pathname === "/dashboard/favoriteBooks"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
+                      }`}
+                    >
+                      <FaHeart className="text-lg mr-3" />
+                      {!sidebarCollapsed && <span>Favorite Books</span>}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/feedback"
+                      className={`flex items-center p-3 rounded-lg transition-colors ${
+                        location.pathname === "/dashboard/feedback"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
+                      }`}
+                    >
+                      <FaCommentDots className="text-lg mr-3" />
+                      {!sidebarCollapsed && <span>Feedback</span>}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/messages"
+                      className={`flex items-center p-3 rounded-lg transition-colors ${
+                        location.pathname === "/dashboard/messages"
+                          ? "bg-green-600/20 text-green-400 border-l-4 border-green-500"
+                          : "hover:bg-white/5 hover:text-green-300 text-gray-300"
+                      }`}
+                    >
+                      <FaEnvelopeOpenText className="text-lg mr-3" />
+                      {!sidebarCollapsed && <span>Messages</span>}
                     </Link>
                   </li>
                 </>
