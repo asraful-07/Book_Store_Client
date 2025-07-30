@@ -15,12 +15,10 @@ const UpdateBook = () => {
     formState: { errors },
   } = useForm();
 
-  // Book Load করে form pre-fill করা
   useEffect(() => {
     fetch(`http://localhost:8080/book/${id}`)
       .then((res) => res.json())
       .then((data) => {
-        // Image এবং Tags স্ট্রিং-এ রূপান্তর
         const formattedData = {
           ...data,
           imageUrls: data.imageUrls?.join(", ") || "",
@@ -249,7 +247,7 @@ const UpdateBook = () => {
             </label>
             <textarea
               {...register("description")}
-              rows="4"
+              rows="6"
               className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter Book Description"
             ></textarea>

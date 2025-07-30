@@ -12,7 +12,7 @@ const ManageBook = () => {
   // Get all books
   useEffect(() => {
     axiosSecure
-      .get("/book")
+      .get("/book-data")
       .then((res) => setBooks(res.data))
       .catch((err) => console.log(err));
   }, [axiosSecure]);

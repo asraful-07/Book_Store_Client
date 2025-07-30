@@ -43,31 +43,24 @@ const AddBook = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 md:px-8 py-10">
-      <h1 className="text-3xl font-bold mb-8 text-start text-indigo-700">
-        Add New Book
-      </h1>
-
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="p-8 max-w-4xl mx-auto space-y-6 border border-indigo-100"
-      >
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)} className="max-w-6xl mx-auto">
         <div>
           {/* Basic Information */}
           <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-indigo-700 border-b pb-2">
+            <h2 className="text-xl font-semibold text-green-900 border-b pb-2">
               Basic Information
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Name */}
               <div>
-                <label className="block mb-1 font-medium text-indigo-700">
+                <label className="block mb-1 font-medium text-green-900">
                   Book Name *
                 </label>
                 <input
                   type="text"
                   {...register("name", { required: "Name is required" })}
-                  className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                   placeholder="Enter Book Name"
                 />
                 {errors.name && (
@@ -79,13 +72,13 @@ const AddBook = () => {
 
               {/* Author */}
               <div>
-                <label className="block mb-1 font-medium text-indigo-700">
+                <label className="block mb-1 font-medium text-green-900">
                   Author *
                 </label>
                 <input
                   type="text"
                   {...register("author", { required: "Author is required" })}
-                  className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                   placeholder="Enter Author Name"
                 />
                 {errors.author && (
@@ -99,25 +92,25 @@ const AddBook = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Publication */}
               <div>
-                <label className="block mb-1 font-medium text-indigo-700">
+                <label className="block mb-1 font-medium text-green-900">
                   Publication
                 </label>
                 <input
                   type="text"
                   {...register("publication")}
-                  className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                   placeholder="Enter Publication"
                 />
               </div>
 
               {/* Product Type */}
               <div>
-                <label className="block mb-1 font-medium text-indigo-700">
+                <label className="block mb-1 font-medium text-green-900">
                   Product Type
                 </label>
                 <select
                   {...register("productType")}
-                  className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                 >
                   <option value="">Select Product Type</option>
                   <option value="adventure">Adventure</option>
@@ -130,13 +123,13 @@ const AddBook = () => {
 
             {/* Publish Date */}
             <div>
-              <label className="block mb-1 font-medium text-indigo-700">
+              <label className="block mb-1 font-medium text-green-900">
                 Publish Date
               </label>
               <input
                 type="date"
                 {...register("publishDate")}
-                className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               />
             </div>
           </div>
@@ -144,13 +137,13 @@ const AddBook = () => {
 
         {/* Pricing Section */}
         <div className="space-y-6">
-          <h2 className="text-xl font-semibold text-indigo-700 border-b pb-2">
+          <h2 className="text-xl font-semibold text-green-900 border-b pb-2">
             Pricing Information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Price */}
             <div>
-              <label className="block mb-1 font-medium text-indigo-700">
+              <label className="block mb-1 font-medium text-green-900">
                 Price *
               </label>
               <input
@@ -160,7 +153,7 @@ const AddBook = () => {
                   required: "Price is required",
                   min: { value: 0, message: "Price must be positive" },
                 })}
-                className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                 placeholder="Enter Price"
               />
               {errors.price && (
@@ -172,7 +165,7 @@ const AddBook = () => {
 
             {/* Old Price */}
             <div>
-              <label className="block mb-1 font-medium text-indigo-700">
+              <label className="block mb-1 font-medium text-green-900">
                 Old Price
               </label>
               <input
@@ -181,7 +174,7 @@ const AddBook = () => {
                 {...register("oldPrice", {
                   min: { value: 0, message: "Price must be positive" },
                 })}
-                className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                 placeholder="Enter Old Price"
               />
               {errors.oldPrice && (
@@ -193,7 +186,7 @@ const AddBook = () => {
 
             {/* Stock */}
             <div>
-              <label className="block mb-1 font-medium text-indigo-700">
+              <label className="block mb-1 font-medium text-green-900">
                 Stock *
               </label>
               <input
@@ -202,7 +195,7 @@ const AddBook = () => {
                   required: "Stock is required",
                   min: { value: 0, message: "Stock must be positive" },
                 })}
-                className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                 placeholder="Enter Stock"
               />
               {errors.stock && (
@@ -216,45 +209,45 @@ const AddBook = () => {
 
         {/* Additional Information */}
         <div className="space-y-6">
-          <h2 className="text-xl font-semibold text-indigo-700 border-b pb-2">
+          <h2 className="text-xl font-semibold text-green-900 border-b pb-2">
             Additional Information
           </h2>
 
           {/* Description */}
           <div>
-            <label className="block mb-1 font-medium text-indigo-700">
+            <label className="block mb-1 font-medium text-green-900">
               Description
             </label>
             <textarea
               {...register("description")}
-              rows="4"
-              className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+              rows="6"
+              className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter Book Description"
             ></textarea>
           </div>
 
           {/* Image URLs */}
           <div>
-            <label className="block mb-1 font-medium text-indigo-700">
+            <label className="block mb-1 font-medium text-green-900">
               Image URLs
             </label>
             <textarea
               {...register("imageUrls")}
               rows="2"
-              className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="Enter image URLs separated by commas"
             ></textarea>
           </div>
 
           {/* Tags */}
           <div>
-            <label className="block mb-1 font-medium text-indigo-700">
+            <label className="block mb-1 font-medium text-green-900">
               Tags
             </label>
             <input
               type="text"
               {...register("tags")}
-              className="w-full px-4 py-2 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="w-full px-4 py-2 border-2 border-green-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
               placeholder="e.g. fiction, bestseller, romance"
             />
           </div>
@@ -264,7 +257,7 @@ const AddBook = () => {
         <div className="pt-4">
           <button
             type="submit"
-            className="w-full py-3 text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg font-semibold transition duration-300 shadow-lg"
+            className="w-full py-3 text-white bg-gradient-to-r from-green-600 to-orange-600 hover:from-ge9text-green-900 hover:to-ge9text-green-900 rounded-lg font-semibold transition duration-300 shadow-lg"
           >
             Add Book
           </button>
