@@ -4,6 +4,7 @@ import MyBookCard from "../../Components/MyBookCard";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../provider/AuthProvider";
 import { FiShoppingBag, FiTrash2, FiDollarSign } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const MyBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -55,22 +56,18 @@ const MyBooks = () => {
       console.error("Error deleting book:", error);
     }
   };
-
   // Clear all books
   const handleClearAll = async () => {
-    const confirmClear = window.confirm(
-      "Are you sure to clear all your books?"
-    );
-    if (confirmClear) {
-      try {
-        await Promise.all(
-          books.map((book) => axiosSecure.delete(`/cart/${book._id}`))
-        );
-        setBooks([]);
-        calculateTotal([]);
-      } catch (error) {
-        console.error("Error clearing books:", error);
-      }
+    try {
+      await Promise.all(
+        books.map((book) => axiosSecure.delete(`/cart/${book._id}`))
+      );
+      setBooks([]);
+      calculateTotal([]);
+      toast.success("All books cleared successfully!");
+    } catch (error) {
+      console.error("Error clearing books:", error);
+      toast.error("Failed to clear books. Please try again.");
     }
   };
 
