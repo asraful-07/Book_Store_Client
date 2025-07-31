@@ -5,6 +5,7 @@ import { useAuth } from "../../provider/AuthProvider";
 import FavoriteCard from "../../Components/FavoriteCard";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FiTrash2 } from "react-icons/fi";
 
 const Favorite = () => {
   const axiosSecure = useAxiosSecure();
@@ -46,14 +47,15 @@ const Favorite = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-gray-800">Favorite Books</h1>
         {favoriteBooks.length > 0 && (
           <button
             onClick={handleClearAll}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition text-sm"
+            className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg transition flex items-center justify-center"
           >
+            <FiTrash2 className="mr-2" />
             Clear All
           </button>
         )}
@@ -85,7 +87,7 @@ const Favorite = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1">
+        <div className="grid grid-cols-1 gap-6">
           {favoriteBooks.map((book) => (
             <FavoriteCard
               key={book._id}
