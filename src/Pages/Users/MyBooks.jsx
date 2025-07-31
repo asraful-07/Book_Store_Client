@@ -34,7 +34,7 @@ const MyBooks = () => {
       calculateTotal(bookList);
     } catch (error) {
       console.error("Error fetching books:", error);
-      setBooks([]); // fallback to empty
+      setBooks([]);
     } finally {
       setIsLoading(false);
     }
