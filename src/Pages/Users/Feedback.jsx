@@ -138,7 +138,7 @@ const Feedback = () => {
 
         <button
           type="submit"
-          className="w-full bg-green-800 hover:bg-green-800 text-white font-medium py-2 px-4 rounded-md transition duration-300"
+          className="w-full bg-green-700 hover:bg-green-900 text-white font-medium py-2 px-4 rounded-md transition duration-300"
         >
           Submit Feedback
         </button>
