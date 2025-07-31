@@ -21,6 +21,7 @@ import PaymentHistory from "./Pages/Payment/PaymentHistory";
 import Completed from "./Pages/Users/Completed";
 import Feedback from "./Pages/Users/Feedback";
 import Massage from "./Pages/Users/Massage";
+import WellCome from "./Components/WellCome";
 
 const Router = createBrowserRouter([
   {
@@ -73,7 +74,7 @@ const Router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <h1>Hello Dashboard Profile</h1>,
+        element: <WellCome />,
       },
       // Admin work
       {
