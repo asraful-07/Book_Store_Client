@@ -19,6 +19,8 @@ import UpdateBook from "./Components/UpdateBook";
 import Favorite from "./Pages/Users/Favorite";
 import PaymentHistory from "./Pages/Payment/PaymentHistory";
 import Completed from "./Pages/Users/Completed";
+import Feedback from "./Pages/Users/Feedback";
+import Massage from "./Pages/Users/Massage";
 
 const Router = createBrowserRouter([
   {
@@ -110,6 +112,14 @@ const Router = createBrowserRouter([
       {
         path: "completedOrders",
         element: <Completed />,
+      },
+      {
+        path: "feedback",
+        element: <Feedback />,
+      },
+      {
+        path: "messages",
+        element: <Massage />,
       },
       {
         path: "*",
