@@ -20,16 +20,22 @@ const FavoriteCard = ({ book, favoriteBooks, setFavoriteBooks }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 relative group hover:shadow-lg transition">
+    <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 flex gap-4 items-start relative group hover:shadow-lg transition">
+      {/* Book Image */}
       <img
         src={imageUrls?.[0]}
         alt={name}
-        className="w-full h-48 object-cover rounded-md mb-3"
+        className="w-24 h-24 object-cover rounded-md"
       />
-      <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-      <p className="text-sm text-gray-500 mb-1">By {author}</p>
-      <p className="text-sm text-gray-600">{productType}</p>
 
+      {/* Book Info */}
+      <div>
+        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+        <p className="text-sm text-gray-500 mb-1">By {author}</p>
+        <p className="text-sm text-gray-600">{productType}</p>
+      </div>
+
+      {/* Delete Button */}
       <button
         onClick={handleDelete}
         className="absolute top-3 right-3 text-red-500 hover:text-red-700"

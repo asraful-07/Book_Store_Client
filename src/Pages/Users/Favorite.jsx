@@ -1,8 +1,10 @@
+// Favorite.jsx
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useAuth } from "../../provider/AuthProvider";
 import FavoriteCard from "../../Components/FavoriteCard";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Favorite = () => {
   const axiosSecure = useAxiosSecure();
@@ -27,17 +29,42 @@ const Favorite = () => {
     }
   }, [user?.email, axiosSecure]);
 
+  // Clear all books
+  const handleClearAll = async () => {
+    try {
+      await Promise.all(
+        favoriteBooks.map((book) =>
+          axiosSecure.delete(`/favorites/${book._id}`)
+        )
+      );
+      setFavoriteBooks([]);
+      toast.success("All favorites cleared!");
+    } catch (error) {
+      console.error("Error clearing books:", error);
+      toast.error("Failed to clear books.");
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-10">
-      <h1 className="text-3xl font-bold text-center mb-8">Favorite Books</h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">Favorite Books</h1>
+        {favoriteBooks.length > 0 && (
+          <button
+            onClick={handleClearAll}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition text-sm"
+          >
+            Clear All
+          </button>
+        )}
+      </div>
 
       {/* Loading Spinner */}
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-purple-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-green-500"></div>
         </div>
       ) : favoriteBooks.length === 0 ? (
-        // Empty State
         <div className="bg-white rounded-xl shadow-md border border-gray-200 p-8 text-center max-w-xl mx-auto">
           <img
             src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png"
@@ -52,14 +79,13 @@ const Favorite = () => {
           </p>
           <button
             onClick={() => navigate("/books")}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition"
+            className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition"
           >
             Browse Books
           </button>
         </div>
       ) : (
-        // Book List
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1">
           {favoriteBooks.map((book) => (
             <FavoriteCard
               key={book._id}
