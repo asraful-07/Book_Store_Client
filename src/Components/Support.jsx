@@ -4,7 +4,7 @@ import support2 from "../assets/images/support2.png";
 import support3 from "../assets/images/support3.png";
 
 const SupportCard1 = () => (
-  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-1">
+  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-2">
     <div className="max-w-xs mx-auto">
       <div className="flex justify-center mb-4">
         <img
@@ -24,7 +24,7 @@ const SupportCard1 = () => (
 );
 
 const SupportCard2 = () => (
-  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-1">
+  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-2">
     <div className="max-w-xs mx-auto">
       <div className="flex justify-center mb-4">
         <img
@@ -44,7 +44,7 @@ const SupportCard2 = () => (
 );
 
 const SupportCard3 = () => (
-  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-1">
+  <div className="flex-1 px-4 py-8 text-center transition-transform duration-300 hover:-translate-y-2">
     <div className="max-w-xs mx-auto">
       <div className="flex justify-center mb-4">
         <img
