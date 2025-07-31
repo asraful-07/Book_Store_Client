@@ -108,7 +108,7 @@ const Review = () => {
 
   return (
     <div className="">
-      <div className="container mx-auto px-4 md:px-8 my-20">
+      <div className="container mx-auto px-4 md:px-8 py-12">
         <h2 className="text-3xl font-bold text-center mb-2 text-gray-800">
           What Our Clients Say
         </h2>
