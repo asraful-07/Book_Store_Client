@@ -6,8 +6,7 @@ import Headline from "../../Components/Headline";
 import MiniBanner from "../../Components/MiniBanner";
 import Review from "../../Components/Review";
 import Support from "../../Components/Support";
-import Avatar from "../../Components/Avatar";
-import Author from "../../Components/Author";
+import Shop from "../../Components/Shop";
 
 const Home = () => {
   return (
@@ -16,7 +15,7 @@ const Home = () => {
       <Headline />
       <Discount />
       <Book />
-
+      <Shop />
       <Review />
       <Support />
       <Blog />
