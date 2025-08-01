@@ -22,13 +22,16 @@ const AddBook = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/book", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formattedData),
-      });
+      const response = await fetch(
+        "https://books-shop-pzyk.onrender.com/book",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
 
       if (response.ok) {
         toast.success("Book added successfully!");

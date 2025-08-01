@@ -52,7 +52,7 @@ const Router = createBrowserRouter([
         path: "/booksDetails/:id",
         element: <BooksDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8080/book/${params.id}`),
+          fetch(`https://books-shop-pzyk.onrender.com/book/${params.id}`),
       },
       {
         path: "/paymentHistory",
