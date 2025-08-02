@@ -9,7 +9,7 @@ import {
 
 export default function ContactUs() {
   return (
-    <div className="container mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+    <div className="flex flex-col lg:flex-row gap-12">
       {/* Contact Form */}
       <div className="w-full lg:w-2/3 space-y-6">
         <h2 className="text-2xl font-bold text-gray-800">Get In Touch</h2>
