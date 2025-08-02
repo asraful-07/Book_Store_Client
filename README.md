@@ -1,12 +1,48 @@
-# React + Vite
+# Bookio Store — Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React-based frontend for the Bookio Store. Features include category filtering, wishlist, pagination, search, sorting, authentication-aware UI, and a beautiful UI using Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Book Browsing**: Filter by category (children, adventure, biography, cook, etc.).
+- **Search & Sort**: Search books, sort by price (low–high, high–low) and recency (old–new / new–old).
+- **Pagination**: Shows 8 books per page with client-side pagination controls.
+- **Wishlist ("Favorites")**: Fetches and displays favorite books using user email. Supports removal.
+- **Authentication-aware Navbar**: Shows Login/Register or Dashboard/Logout based on auth state.
+- **Responsive Layout**: Works across desktop and mobile.
+- **Swiper.js Slider**: Used for showcasing featured books or sections; manual swipe, 4 cards per view, no autoplay.
+- **React Toastify**: Feedback for user actions (add/remove, errors, etc.).
+- **Category Sidebar**: Left-side filter panel for easy navigation.
+- **React Icons**: Visual enhancements across UI elements.
 
-## Expanding the ESLint configuration
+## 🧰 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React.js
+- Tailwind CSS
+- Swiper.js
+- React Router
+- Axios / `useAxiosSecure` (for secure requests)
+- React Toastify
+- React Icons
+- Context / Custom Hooks (e.g., auth management, secure axios)
+- Optional: Zustand / Redux (if state management is extended)
+
+## 📦 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or yarn
+- Backend API running and accessible (Bookio Store API)
+
+### Installation
+
+```bash
+# move into client directory
+cd client
+
+# install dependencies
+npm install
+# or
+yarn install
+```
