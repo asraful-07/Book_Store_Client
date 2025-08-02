@@ -21,7 +21,15 @@ const StatItem = ({ value, label }) => (
 const Headline = () => {
   return (
     <div className="overflow-hidden w-full bg-white">
-      <div className="inline-flex animate-marquee">
+      <div
+        className="inline-flex"
+        style={{
+          display: "inline-flex",
+          whiteSpace: "nowrap",
+          willChange: "transform",
+          animation: "marquee 20s linear infinite",
+        }}
+      >
         {stats.map((s, idx) => (
           <StatItem key={idx} value={s.value} label={s.label} />
         ))}
@@ -30,22 +38,18 @@ const Headline = () => {
           <StatItem key={`dup-${idx}`} value={s.value} label={s.label} />
         ))}
       </div>
-      <style jsx>{`
-        .animate-marquee {
-          display: inline-flex;
-          white-space: nowrap;
-          will-change: transform;
-          animation: marquee 20s linear infinite;
-        }
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
+      <style>
+        {`
+          @keyframes marquee {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
           }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 };

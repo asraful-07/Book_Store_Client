@@ -16,7 +16,7 @@ const RelatedBook = ({ bookId }) => {
   useEffect(() => {
     if (bookId) {
       axios
-        .get(`http://localhost:8080/book/related/${bookId}`)
+        .get(`https://books-shop-pzyk.onrender.com/book/related/${bookId}`)
         .then((res) => setRelatedBooks(res.data))
         .catch((err) => console.error("Error loading related books:", err));
     }
