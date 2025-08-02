@@ -7,6 +7,7 @@ import MiniBanner from "../../Components/MiniBanner";
 import Review from "../../Components/Review";
 import Support from "../../Components/Support";
 import Shop from "../../Components/Shop";
+import Author from "../../Components/Author";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <Discount />
       <Book />
       <Shop />
+      <Author />
       <Review />
       <Support />
       <Blog />
