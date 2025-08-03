@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import {
   FaCartPlus,
   FaHeart,
@@ -198,10 +198,11 @@ const BooksDetails = () => {
                   />
                   {isWishlist ? "Wishlisted" : "Wishlist"}
                 </button>
-
-                <button className="flex-1 bg-gradient-to-r from-green-700 to-orange-600 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300">
-                  Buy it Now
-                </button>
+                <Link to="/paymentHistory">
+                  <button className="flex-1 bg-gradient-to-r from-green-700 to-orange-600 text-white px-6 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300">
+                    Buy it Now
+                  </button>
+                </Link>
               </div>
 
               <div className="mb-6">
