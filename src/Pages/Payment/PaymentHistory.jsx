@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useAuth } from "../../provider/AuthProvider";
 import { FiShoppingBag, FiTrash2, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const MyBooks = () => {
   const axiosSecure = useAxiosSecure();
@@ -78,7 +79,7 @@ const MyBooks = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="container mx-auto px-4 lg:px-8 py-8">
       <h1 className="text-2xl font-bold mb-6 flex items-center">
         <FiShoppingBag className="mr-2" />
         {books.length} {books.length === 1 ? "Item" : "Items"} in Your Cart
@@ -124,9 +125,7 @@ const MyBooks = () => {
                   <div className="flex-1">
                     <h3 className="font-medium">{book.name}</h3>
                     <p className="text-sm text-gray-600">By {book.author}</p>
-                    <p className="text-sm text-gray-800 mt-1">
-                      TK {book.price}
-                    </p>
+                    <p className="text-sm text-gray-800 mt-1">$ {book.price}</p>
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -152,7 +151,7 @@ const MyBooks = () => {
                   </div>
 
                   <div className="font-medium">
-                    TK {(book.price * (book.quantity || 1)).toFixed(2)}
+                    $ {(book.price * (book.quantity || 1)).toFixed(2)}
                   </div>
                 </div>
               ))}
@@ -168,16 +167,16 @@ const MyBooks = () => {
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
                 <span className="text-gray-600">SubTotal:</span>
-                <span className="font-medium">TK {subtotal.toFixed(2)}</span>
+                <span className="font-medium">$ {subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Save Amount:</span>
-                <span className="font-medium">TK {saveAmount.toFixed(2)}</span>
+                <span className="font-medium">$ {saveAmount.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Delivery Charge:</span>
                 <span className="font-medium">
-                  TK {deliveryCharge.toFixed(2)}
+                  $ {deliveryCharge.toFixed(2)}
                 </span>
               </div>
             </div>
@@ -186,14 +185,15 @@ const MyBooks = () => {
               <div className="flex justify-between font-bold text-lg">
                 <span>Total:</span>
                 <span>
-                  TK {(subtotal + deliveryCharge - saveAmount).toFixed(2)}
+                  $ {(subtotal + deliveryCharge - saveAmount).toFixed(2)}
                 </span>
               </div>
             </div>
-
-            <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium transition">
-              PROCEED TO CHECKOUT
-            </button>
+            <Link to="/checkout">
+              <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium transition">
+                PROCEED TO CHECKOUT
+              </button>
+            </Link>
           </div>
         </div>
       </div>

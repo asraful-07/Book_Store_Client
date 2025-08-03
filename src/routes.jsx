@@ -24,6 +24,8 @@ import Massage from "./Pages/Users/Massage";
 import WellCome from "./Components/WellCome";
 import ProviderRouter from "./Context/ProviderRouter";
 import Blog from "./Pages/Blog/Blog";
+import CheckoutFrom from "./Pages/Payment/CheckoutFrom";
+import Done from "./Pages/Payment/Done";
 
 const Router = createBrowserRouter([
   {
@@ -63,6 +65,14 @@ const Router = createBrowserRouter([
       {
         path: "/paymentHistory",
         element: <PaymentHistory />,
+      },
+      {
+        path: "/checkout",
+        element: <CheckoutFrom />,
+      },
+      {
+        path: "/done",
+        element: <Done />,
       },
     ],
   },
