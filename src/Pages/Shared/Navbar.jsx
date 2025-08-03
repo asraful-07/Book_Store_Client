@@ -69,6 +69,18 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
+              to="/blog"
+              className={`px-4 py-2 transition-colors ${
+                isActive("/blog")
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-orange-600 font-medium"
+                  : "text-gray-700 hover:text-green-600"
+              }`}
+            >
+              Blog
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/books"
               className={`px-4 py-2 transition-colors ${
                 isActive("/books")
