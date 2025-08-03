@@ -23,6 +23,7 @@ import Feedback from "./Pages/Users/Feedback";
 import Massage from "./Pages/Users/Massage";
 import WellCome from "./Components/WellCome";
 import ProviderRouter from "./Context/ProviderRouter";
+import Blog from "./Pages/Blog/Blog";
 
 const Router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const Router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/books",

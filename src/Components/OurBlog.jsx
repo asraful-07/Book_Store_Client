@@ -1,16 +1,12 @@
 import React from "react";
 
-const Blog = () => {
+const OurBlog = () => {
   return (
-    <div className="container mx-auto px-4 md:px-8 py-12">
-      <div className="text-center mb-12">
+    <div className="">
+      <div className="text-start mb-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-3">
           Bookstore Blog
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Discover the latest book releases, author interviews, and literary
-          insights
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -102,4 +98,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default OurBlog;

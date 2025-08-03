@@ -1,5 +1,5 @@
 import Banner from "../../Components/Banner";
-import Blog from "../../Components/Blog";
+import Blogs from "../../Components/Blogs";
 import Book from "../../Components/Book";
 import Discount from "../../Components/Discount";
 import Headline from "../../Components/Headline";
@@ -20,7 +20,7 @@ const Home = () => {
       <Author />
       <Review />
       <Support />
-      <Blog />
+      <Blogs />
       <MiniBanner />
     </div>
   );
