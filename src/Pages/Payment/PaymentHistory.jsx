@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../provider/AuthProvider";
-import { FiShoppingBag, FiTrash2, FiDollarSign } from "react-icons/fi";
+import { FiShoppingBag, FiTrash2, FiX } from "react-icons/fi";
 import { toast } from "react-toastify";
-import PaymentCard from "./PaymentCard";
 
 const MyBooks = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [totalPrice, setTotalPrice] = useState("0.00");
+  const [subtotal, setSubtotal] = useState(0);
+  const [deliveryCharge] = useState(75);
+  const [saveAmount] = useState(0);
 
-  // Calculate total price safely
-  const calculateTotal = (bookList = []) => {
-    const total = bookList.reduce((sum, book) => {
-      const quantity = book.quantity || 1;
-      return sum + (book.price || 0) * quantity;
+  // Calculate totals
+  const calculateTotals = (bookList = []) => {
+    const subTotal = bookList.reduce((sum, book) => {
+      return sum + (book.price || 0) * (book.quantity || 1);
     }, 0);
-    setTotalPrice(total.toFixed(2));
+    setSubtotal(subTotal);
   };
 
   // Fetch books
@@ -31,7 +29,7 @@ const MyBooks = () => {
       const res = await axiosSecure.get(`/book-cart?email=${user?.email}`);
       const bookList = Array.isArray(res.data) ? res.data : [];
       setBooks(bookList);
-      calculateTotal(bookList);
+      calculateTotals(bookList);
     } catch (error) {
       console.error("Error fetching books:", error);
       setBooks([]);
@@ -46,108 +44,159 @@ const MyBooks = () => {
     }
   }, [user?.email]);
 
-  // Delete individual book
+  // Delete book
   const handleDelete = async (id) => {
     try {
       await axiosSecure.delete(`/cart/${id}`);
       setBooks((prev) => prev.filter((book) => book._id !== id));
-      calculateTotal(books.filter((book) => book._id !== id));
+      calculateTotals(books.filter((book) => book._id !== id));
+      toast.success("Book removed from cart");
     } catch (error) {
       console.error("Error deleting book:", error);
     }
   };
-  // Clear all books
-  const handleClearAll = async () => {
+
+  // Update quantity
+  const handleQuantity = async (id, newQuantity) => {
+    if (newQuantity < 1) return;
+
     try {
-      await Promise.all(
-        books.map((book) => axiosSecure.delete(`/cart/${book._id}`))
+      await axiosSecure.patch(`/cart/${id}`, { quantity: newQuantity });
+      setBooks((prev) =>
+        prev.map((book) =>
+          book._id === id ? { ...book, quantity: newQuantity } : book
+        )
       );
-      setBooks([]);
-      calculateTotal([]);
-      toast.success("All books cleared successfully!");
+      calculateTotals(
+        books.map((book) =>
+          book._id === id ? { ...book, quantity: newQuantity } : book
+        )
+      );
     } catch (error) {
-      console.error("Error clearing books:", error);
-      toast.error("Failed to clear books. Please try again.");
+      console.error("Error updating quantity:", error);
     }
   };
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-        <div className="mb-4 md:mb-0">
-          <h1 className="text-3xl font-bold text-gray-800 flex items-center">
-            <FiShoppingBag className="mr-2" />
-            My Reading List
-          </h1>
-          <p className="text-gray-600 mt-1">
-            {books?.length || 0} {books?.length === 1 ? "item" : "items"} in
-            your collection
-          </p>
+      <h1 className="text-2xl font-bold mb-6 flex items-center">
+        <FiShoppingBag className="mr-2" />
+        {books.length} {books.length === 1 ? "Item" : "Items"} in Your Cart
+      </h1>
+
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Left: Book Items */}
+        <div className="lg:w-2/3">
+          {isLoading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
+            </div>
+          ) : books.length === 0 ? (
+            <div className="bg-white rounded-lg p-8 text-center border">
+              <h3 className="text-xl font-medium mb-4">Your cart is empty</h3>
+              <p className="text-gray-600 mb-6">
+                Add some books to get started
+              </p>
+            </div>
+          ) : (
+            <div className="bg-white rounded-lg border divide-y">
+              {books.map((book) => (
+                <div
+                  key={book._id}
+                  className="p-4 flex items-start sm:items-center gap-4"
+                >
+                  <div className="relative">
+                    <img
+                      src={
+                        book.imageUrls?.[0] || "https://via.placeholder.com/100"
+                      }
+                      alt={book.name}
+                      className="w-20 h-20 object-cover rounded border"
+                    />
+                    <button
+                      onClick={() => handleDelete(book._id)}
+                      className="absolute -top-2 -right-2 bg-white border rounded-full p-1 hover:bg-red-50"
+                    >
+                      <FiX className="text-red-500" size={14} />
+                    </button>
+                  </div>
+
+                  <div className="flex-1">
+                    <h3 className="font-medium">{book.name}</h3>
+                    <p className="text-sm text-gray-600">By {book.author}</p>
+                    <p className="text-sm text-gray-800 mt-1">
+                      TK {book.price}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() =>
+                        handleQuantity(book._id, (book.quantity || 1) - 1)
+                      }
+                      className="w-8 h-8 flex items-center justify-center border rounded"
+                    >
+                      -
+                    </button>
+                    <span className="w-8 text-center">
+                      {book.quantity || 1}
+                    </span>
+                    <button
+                      onClick={() =>
+                        handleQuantity(book._id, (book.quantity || 1) + 1)
+                      }
+                      className="w-8 h-8 flex items-center justify-center border rounded"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <div className="font-medium">
+                    TK {(book.price * (book.quantity || 1)).toFixed(2)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-          <div className="bg-white p-3 rounded-lg shadow-sm border flex items-center justify-between mb-3 sm:mb-0">
-            <span className="text-gray-600 mr-2">Total:</span>
-            <span className="font-bold text-lg text-green-600">
-              ${totalPrice}
-            </span>
-          </div>
-          <button
-            onClick={handleClearAll}
-            className="bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 px-4 py-2 rounded-lg transition flex items-center justify-center"
-          >
-            <FiTrash2 className="mr-2" />
-            Clear All
-          </button>
-          <Link to="/paymentHistory">
-            <button
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-4 rounded-lg transition flex items-center justify-center"
-              disabled={books.length === 0}
-            >
-              <FiDollarSign className="mr-2" />
-              Proceed to Payment
+        {/* Right: Order Summary */}
+        <div className="lg:w-1/3">
+          <div className="bg-white rounded-lg border p-6 sticky top-4">
+            <h2 className="text-xl font-bold mb-4">Cart Total</h2>
+
+            <div className="space-y-3 mb-6">
+              <div className="flex justify-between">
+                <span className="text-gray-600">SubTotal:</span>
+                <span className="font-medium">TK {subtotal.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Save Amount:</span>
+                <span className="font-medium">TK {saveAmount.toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Delivery Charge:</span>
+                <span className="font-medium">
+                  TK {deliveryCharge.toFixed(2)}
+                </span>
+              </div>
+            </div>
+
+            <div className="border-t pt-4 mb-6">
+              <div className="flex justify-between font-bold text-lg">
+                <span>Total:</span>
+                <span>
+                  TK {(subtotal + deliveryCharge - saveAmount).toFixed(2)}
+                </span>
+              </div>
+            </div>
+
+            <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium transition">
+              PROCEED TO CHECKOUT
             </button>
-          </Link>
+          </div>
         </div>
       </div>
-
-      {/* Loading State */}
-      {isLoading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-500"></div>
-        </div>
-      ) : books.length === 0 ? (
-        // Empty State
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
-          <div className="max-w-md mx-auto">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4076/4076478.png"
-              alt="Empty cart"
-              className="w-32 h-32 mx-auto opacity-70 mb-4"
-            />
-            <h3 className="text-xl font-medium text-gray-700 mb-2">
-              Your reading list is empty
-            </h3>
-            <p className="text-gray-500 mb-6">
-              Add some books to get started on your reading journey
-            </p>
-            <button
-              onClick={() => navigate("/books")}
-              className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition"
-            >
-              Browse Books
-            </button>
-          </div>
-        </div>
-      ) : (
-        // Book Cards
-        <div className="grid grid-cols-1 gap-6">
-          {books.map((book) => (
-            <PaymentCard key={book._id} book={book} onDelete={handleDelete} />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
